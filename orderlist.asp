@@ -2,11 +2,11 @@
 <!--#include file="header.asp"-->
 <%
 set rs_order=server.createobject("adodb.recordset")
-sql="SELECT *, IIF(是否处理 = '1', '已处理', '未处理') AS 处理结果 FROM 订单表 WHERE 用户名='" & session("user") & "' ORDER BY 订单ID"
+sql="SELECT *, IIF(是否处理 = '1', '已处理', '未处理') AS 处理结果 FROM 订单表 WHERE 用户名='" & session("user") & "' ORDER BY 订单ID DESC"
 rs_order.open sql,conn,1,1
 
 set rs_orderlist=server.createobject("adodb.recordset")
-sql="SELECT A.订单ID, A.订购数量, B.* FROM 订单产品 A INNER JOIN 产品表 B ON A.产品ID = CStr(B.产品ID) ORDER BY A.订单ID"
+sql="SELECT A.订单ID, A.订购数量, B.* FROM 订单产品 A INNER JOIN 产品表 B ON A.产品ID = CStr(B.产品ID) ORDER BY A.订单ID DESC"
 rs_orderlist.open sql,conn,1,1
 %>
 <link href="css/stylenew.css" rel="stylesheet" type="text/css" />
