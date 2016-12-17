@@ -5,10 +5,6 @@ set rs_ordermark0=server.createobject("adodb.recordset")
 sql="SELECT *, IIF(是否处理 = '1', '已处理', '未处理') AS 处理结果 FROM 订单表 WHERE 是否处理='0' ORDER BY 订单序列号 DESC"
 rs_ordermark0.open sql,conn,1,1
 
-if rs_ordermark0.recordcount=0 then
-	error_inf="订单库里没有未处理的订单!"
-end if
-
 set rs_orderlist=server.createobject("adodb.recordset")
 sql="SELECT A.订单ID, A.订购数量, B.* FROM 订单产品 A INNER JOIN 产品表 B ON A.产品ID = CStr(B.产品ID) ORDER BY A.订单ID"
 rs_orderlist.open sql,conn,1,1

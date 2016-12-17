@@ -1,3 +1,8 @@
+<%
+	if session("user_prop") <> "admin" then
+		response.Redirect("index.asp")
+	end if		
+%>
 <div class="col-md-3 sidebar">
     <div class="block block-layered-nav">
         <div class="block-title" style="padding: 7px 15px; background: #9fc5e8; text-align: center;">
